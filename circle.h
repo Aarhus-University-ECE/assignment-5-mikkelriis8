@@ -4,8 +4,11 @@ typedef struct point {
 	int y;
 } point;
 
-/*add your definition of circle here. You need top call it "circle"*/
+typedef struct circle {
+    int r; /* radius */
+    point p; /* pointer coordinates */
+} circle;
 
-void fiveCircles(circle c[]);
-int circleIsValid(const circle* c);
-void translate(circle* c, const point* p);
+void fiveCircles (circle c[]);
+int circleIsValid (const circle* c);
+void translate (circle* c, const point* p);

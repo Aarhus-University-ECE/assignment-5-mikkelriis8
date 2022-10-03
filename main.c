@@ -1,7 +1,10 @@
 #include <stdio.h>
-#include<malloc.h>
+#include <stdlib.h>
 #include "circle.h"
-#include"jollyjumper.h"
+#include "jollyjumper.h"
+#include "circle.c"
+#include "jollyJumper.c"
+
 
 void printCircle(circle c) {
 	printf("p.x: %d, p.y: %d, r: %d\n", c.p.x, c.p.y, c.r);
@@ -21,15 +24,33 @@ int main(void) {
 	printCircle(c[1]);
 	printf("isValid: %d", circleIsValid(&c[1]));
 
-	/*answer to exercise 7.b*/
-	int n; /*number of numbers to read*/
-	/*readin n and check that is is OK*/
+	int i; /* counter variable */
+    int n;
+    int seq[n];
+    int jolly;
+
+    printf("How long do you want the sequence to be?\n");
+    scanf("%d", &n);
+
+    printf("Insert sequence that's %d numbers long:\n", n);
+    for (i = 0; i < n; i++) {
+        scanf("%d", &seq[i]);
+    }
+
+    jolly = isJollyJumper(seq, n - 1);
+
+    if (jolly == 0) {
+        printf("Not jolly");
+    }
+    else if (jolly == 1) {
+        printf("Jolly");
+    }
 
 	int *numbers = malloc(sizeof(int) * n); /*the numbers read*/
 
 	/*readin the n numbers in the array numbers*/
 
-	if (isJollyJumber(numbers, n)) {
+	if (isJollyJumper(numbers, n)) {
 		printf("it is a Jolly Jumper");}
 	else {
 		printf("not a Jolly Jumper");}
